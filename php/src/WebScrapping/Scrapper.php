@@ -5,9 +5,11 @@ namespace Chuva\Php\WebScrapping;
 use Chuva\Php\WebScrapping\Entity\Paper;
 use Chuva\Php\WebScrapping\Entity\Person;
 
-class Scrapper {
+class Scrapper
+{
     
-    public function scrap(\DOMDocument $dom): array {
+    public function scrap(\DOMDocument $dom): array
+    {
         $papers = [];
         $xpath = new \DOMXPath($dom);
         
@@ -27,29 +29,29 @@ class Scrapper {
 
         // Loop para criar os respectivos papers
         foreach ($titleElements as $i => $titleElement) {
-          $id = $idElements->item($i)->textContent;
-          $title = $titleElement->textContent;
-          $type = $typeElements->item($i)->textContent;
+            $id = $idElements->item($i)->textContent;
+            $title = $titleElement->textContent;
+            $type = $typeElements->item($i)->textContent;
       
-          // Definindo o contexto do XPath para o pai do elemento atual (para evitar coletar autores de outros proceedings)
-          $titleContext = $titleElement->parentNode;
+            // Definindo o contexto do XPath para o pai do elemento atual (para evitar coletar autores de outros proceedings)
+            $titleContext = $titleElement->parentNode;
       
-          // Query com o contexto do XPath definido
-          $authorElements = $xpath->query('div[@class="authors"]/span', $titleContext);
+            // Query com o contexto do XPath definido
+            $authorElements = $xpath->query('div[@class="authors"]/span', $titleContext);
       
-          // Array para armazenar os autores
-          $authors = [];
+            // Array para armazenar os autores
+            $authors = [];
       
-          // Instanciando objetos Person e adicinando à array
-          foreach ($authorElements as $authorElement) {
-              $name = $authorElement->textContent;
-              $institution = $authorElement->getAttribute('title');
-              $authors[] = new Person($name, $institution);
-          }
+            // Instanciando objetos Person e adicinando à array
+            foreach ($authorElements as $authorElement) {
+                $name = $authorElement->textContent;
+                $institution = $authorElement->getAttribute('title');
+                $authors[] = new Person($name, $institution);
+            }
       
-          // Instanciando objetos Paper com os dados coletados
-          $papers[] = new Paper($id, $title, $type, $authors);
-      }
+            // Instanciando objetos Paper com os dados coletados
+            $papers[] = new Paper($id, $title, $type, $authors);
+        }
 
         return $papers;
     }
