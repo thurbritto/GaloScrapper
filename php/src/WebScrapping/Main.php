@@ -26,11 +26,11 @@ class Main {
     $writer = WriterEntityFactory::createXLSXWriter();
     $writer->openToFile('output.xlsx');
 
-    // Array para armazenar os cabeçalhos base
+    // Array para armazenar os cabeçalhos
     $header = [
       'ID',
       'Title',
-      'Type',
+      'Type'
     ];
 
     // Cabeçalho dinâmico para quantidade máxima de autores
@@ -41,7 +41,7 @@ class Main {
       $header[] = "Author $i Institute";
     }
 
-    // Inserindo cabeçalho base na planilha
+    // Inserindo cabeçalho na planilha
     $writer->addRow(WriterEntityFactory::createRowFromArray($header));
 
     foreach ($data as $paper) {
@@ -49,7 +49,7 @@ class Main {
       $rowData = [
           $paper->id,
           $paper->title,
-          $paper->type,
+          $paper->type
       ];
 
       // Obtendo informações dos autores e instituições

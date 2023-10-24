@@ -34,7 +34,7 @@ class Scrapper {
           // Definindo o contexto do XPath para o pai do elemento atual (para evitar coletar autores de outros proceedings)
           $titleContext = $titleElement->parentNode;
       
-          // Query após redefinir o contexto do XPath 
+          // Query com o contexto do XPath definido
           $authorElements = $xpath->query('div[@class="authors"]/span', $titleContext);
       
           // Array para armazenar os autores

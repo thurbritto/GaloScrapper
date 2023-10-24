@@ -14,7 +14,9 @@
         "webscrapping": "php -r \"require 'vendor/autoload.php'; Chuva\\Php\\WebScrapping\\Main::run();\""
     },
     "require": {
-        "box/spout": "^3.3"
+        "box/spout": "^3.3",
+        "psalm/phar": "dev-master",
+        "drupal/coder": "8.3.x-dev"
     },
     "config": {
         "allow-plugins": {

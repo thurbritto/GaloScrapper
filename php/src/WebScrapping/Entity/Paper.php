@@ -45,19 +45,7 @@ class Paper {
     $this->authors = $authors;
   }
 
-  public function getId() {
-    return $this->id;
-  }
-  public function getTitle() {
-    return $this->title;
-  }
-  public function getType() {
-    return $this->type;
-  }
-  public function getAuthors() {
-    return $this->authors;
-  }
   public function __toString() {
-    return "". $this->id ."". $this->title . " ". $this->type ."". $this->authors . "";
+    return $this->id . " " . $this->title . " " . $this->type . " " . $this->authors;
   }
 }

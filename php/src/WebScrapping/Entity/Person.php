@@ -25,15 +25,7 @@ class Person {
     $this->institution = $institution;
   }
 
-  public function getName(){
-    return $this->name;
-  }
-  public function getInstitution(){
-    return $this->institution;
-  }
-
   public function __toString(){
     return $this->name . " " . $this->institution;
-    
   }
 }
