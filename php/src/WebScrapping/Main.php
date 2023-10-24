@@ -41,8 +41,6 @@ class Main {
       $header[] = "Author $i Institute";
     }
 
-    $writer->openToFile('output.xlsx');
-
     // Inserindo cabeçalho base na planilha
     $writer->addRow(WriterEntityFactory::createRowFromArray($header));
 
