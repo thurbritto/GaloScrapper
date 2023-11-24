@@ -51,4 +51,5 @@ class Paper
     {
         return $this->id . " " . $this->title . " " . $this->type . " " . $this->authors;
     }
+
 }
